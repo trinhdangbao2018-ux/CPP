@@ -2,7 +2,9 @@
 
 int main(void) {
     int selection, days;
-    int first_day = 0, daily_rate = 0, week_max = 0;
+    int first_day = 0;
+    int daily_rate = 0;
+    int week_max = 0;
     int charge = 0;
 
     printf("Please select from four types of AC: 1, 2, 3, and 4\n");
@@ -10,21 +12,21 @@ int main(void) {
     if (scanf("%d", &selection) != 1) {
         return 0;
     }
-
     if (selection < 1 || selection > 4) {
         printf("Invalid selection. Select from 1 to 4.\n");
         return 0;
     }
+    // using 2 if to take away the edge case
 
     printf("Enter days:");
     if (scanf("%d", &days) != 1) {
         return 0;
     }
-
     if (days < 0) {
         printf("Invalid days.\n");
         return 0;
     }
+    //using 2 if to take away the edge case
 
     switch (selection) {
         case 1:
@@ -42,6 +44,7 @@ int main(void) {
         default:
             return 0;
     }
+    //give each case a value to use 1 math operation only
 
     if (days == 0) {
         charge = 0;
@@ -64,6 +67,7 @@ int main(void) {
 
         charge += rem_charge;
     }
+    // calculate if customer wanna rent more than 1 week by evaluation and indicate 1 week max by compare to week_max
 
     printf("Charge($): %d\n", charge);
     return 0;
