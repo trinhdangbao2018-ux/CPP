@@ -1,35 +1,38 @@
-cat > project3_counselors.c <<'EOF'
 // project3_counselors.c - Find the counselor that has not been assigned
 // Dang Bao Trinh
 
 #include <stdio.h>
 
-/* Search function:
-   counselors[] contains n-1 assigned counselor numbers (each 1..n).
-   Return the counselor number in 1..n that is missing.
+/*
+   Function: search
+   Purpose: Find the counselor number that has not been assigned.
+   counselors[] contains n-1 assigned counselor numbers (from 1 to n).
+   n is the total number of counselors.
 */
 int search(int counselors[], int n) {
-    int total = n * (n + 1) / 2;  // sum 1..n
+    int total = n * (n + 1) / 2;  // Sum of numbers from 1 to n
     int sum = 0;
+
     for (int i = 0; i < n - 1; i++) {
         sum += counselors[i];
     }
-    return total - sum;
+
+    return total - sum;  // Missing counselor
 }
 
 int main(void) {
     int n;
 
-    /* Prompt exactly as required */
     printf("Enter number of counselors: ");
-    if (scanf("%d", &n) != 1) return 0;
+    if (scanf("%d", &n) != 1)
+        return 0;
 
-    /* allocate array to hold n-1 assigned counselors */
     int counselors[n - 1];
 
     printf("Enter counselors assigned: ");
     for (int i = 0; i < n - 1; i++) {
-        if (scanf("%d", &counselors[i]) != 1) return 0;
+        if (scanf("%d", &counselors[i]) != 1)
+            return 0;
     }
 
     int missing = search(counselors, n);
@@ -38,4 +41,3 @@ int main(void) {
 
     return 0;
 }
-EOF
